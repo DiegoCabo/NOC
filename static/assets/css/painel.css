@@ -1,0 +1,177 @@
+body {
+  /* font-family: 'Manbo'; */
+  margin: 0;
+  padding: 0;
+}
+
+#main {
+  zoom: 0.72;
+}
+
+.text-mono {
+  font-family: 'Cerebru Code';
+}
+
+.bg-dark .sidenav.bg-black,
+.bg-dark #main {
+  background: #000000;
+}
+
+.bg-dark .sidenav .navbar::before {
+  display: none;
+}
+
+.card,
+.card-footer:last-child {
+  border-radius: 0.4rem;
+}
+
+.card {
+  margin-bottom: 0.2rem !important;
+}
+
+.card-primary {
+  margin-bottom: 0.8rem !important;
+}
+
+.bg-dark .table > tbody > tr {
+  border: none !important;
+}
+
+.bg-dark .table-theme tbody td {
+  border-left: none !important;
+  border-right: none !important;
+  background: none !important;
+}
+
+.bg-dark .table-theme tbody td:first-child,
+.bg-dark .table-theme tbody td:last-child {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.bg-dark .table > tbody > tr,
+.bg-dark .table > thead > tr {
+  box-shadow: 0 6px 10px rgb(0 0 0 / 40%);
+}
+
+/* .bg-dark .table > tbody > tr:last-child {
+box-shadow: none;
+} */
+.table th,
+.table td {
+  border-top-color: rgba(160, 175, 185, 0.25);
+}
+
+.row-sm [class*='col-'],
+.row-sm .col {
+  padding-left: 0.2rem rem;
+  padding-right: 0.2rem;
+}
+
+.bg-dark .card,
+.bg-dark .block {
+  border: none;
+}
+
+.rainbow {
+  background: linear-gradient(
+    137.42deg,
+    rgb(0, 213, 255) 0%,
+    rgb(208, 38, 111) 40%,
+    rgb(185, 181, 0) 100%
+  );
+  background-size: 300% 300%;
+  animation: rainbow 20s ease infinite;
+  width: 100%;
+  height: 3px;
+  display: block;
+}
+
+.rainbow-bg {
+  background: linear-gradient(
+    137.42deg,
+    rgba(0, 213, 255, 0.2) 0%,
+    rgba(208, 38, 111, 0.2) 40%,
+    rgba(185, 181, 0, 0.2) 100%
+  );
+  background-size: 100% 100%;
+  /* animation: rainbow 20s ease infinite; */
+  box-shadow: inset 0 30vh 100rem 10rem #000000;
+}
+
+.rainbow-bg-header {
+  background: linear-gradient(
+    137.42deg,
+    rgba(0, 213, 255, 0.35) 0%,
+    rgba(208, 38, 111, 0.35) 40%,
+    rgba(185, 181, 0, 0.35) 100%
+  );
+  background-size: 100% 100%;
+  /* background-size: 300% 300%; */
+  /* animation: rainbow 20s ease infinite; */
+  box-shadow: inset 0 -40rem 20rem 0 #000000;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.offline-ui {
+  zoom: 1.4;
+  font-weight: bold;
+}
+
+.gd-danger {
+  background: #f54343 linear-gradient(45deg, #f54343, #870707);
+}
+
+.position_move {
+  transition: all 1s ease;
+}
+
+.position_moving {
+  background: rgb(255 255 255 / 40%);
+  border-radius: 0.5rem;
+}
+
+.position_1 {
+  order: 1;
+}
+.position_2 {
+  order: 2;
+}
+.position_3 {
+  order: 3;
+}
+.position_4 {
+  order: 4;
+}
+.position_5 {
+  order: 5;
+}
+.position_6 {
+  order: 6;
+}
+.position_7 {
+  order: 7;
+}
+.position_8 {
+  order: 8;
+}
+.position_9 {
+  order: 9;
+}
+.position_10 {
+  order: 10;
+}

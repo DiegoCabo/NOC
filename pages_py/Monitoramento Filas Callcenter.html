@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="v2">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Monitoramento Filas Callcenter - Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="https://monit-filas-callcenter.go.akamai-access.com/filas/favicon.ico"
+    type="image/x-icon">
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/bootstrap-test.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/theme-test.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/painel.css') }}">
+  <script src="{{url_for('static',filename='assets/js/app/painel.js')}}"></script>
+
+  <style type="text/css" id="operaUserStyle"></style>
+  <style type="text/css">
+    .ali-helper-trend-card {
+      border-left: 1px solid lightgrey;
+    }
+
+    .ali-helper-trend-card:first-child {
+      border-left: none;
+    }
+
+    .ali-helper-trend-items-navigation-button {
+      padding: 1px 8px;
+      font-size: 16px;
+      font-weight: bolder;
+      background-color: white;
+      color: #FF530D;
+      cursor: pointer;
+    }
+
+    .ali-helper-trend-items-navigation-button[disabled] {
+      padding: 1px 8px;
+      font-size: 16px;
+      background-color: lightgrey;
+      color: black;
+      cursor: not-allowed;
+    }
+
+    .ali-helper-trend-items {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      border-radius: 15px;
+      background-color: white;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      border: 1px solid rgb(18, 27, 33);
+      border-top: none;
+    }
+
+    .ali-helper-trend-items.home {
+      margin-top: 0;
+      width: 1200px;
+      min-width: 1200px;
+      margin: auto;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      border: 1px solid rgb(18, 27, 33);
+      border-top: none;
+      margin-bottom: 2px;
+    }
+
+    .ali-helper-trend-box-container {
+      background-color: white;
+      padding-bottom: 10px;
+    }
+
+    #ali-helper-popover-conteiner {
+      position: absolute;
+      bottom: 55px;
+      left: 150px;
+      width: 220px;
+      background-color: white;
+      border: 1px solid darkgrey;
+      filter: drop-shadow(0 0 2rem black);
+      border-radius: 5px;
+      padding: 10px;
+      padding-right: 20px;
+      cursor: auto;
+    }
+
+    #ali-helper-popover-conteiner:before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      width: 0;
+      bottom: -20px;
+      left: calc(50% - 10px);
+      border: 10px solid transparent;
+      border-top-color: white;
+    }
+  </style>
+</head>
+
+<body class="layout-row bg-dark" style="overflow: hidden;">
+  <div id="main" class="layout-column flex">
+
+    <!-- ############ Content START-->
+    <div id="content" class="flex">
+      <!-- ############ Main START-->
+      <div class="page-content" id="page-content">
+        <div class="rainbow--"></div>
+        <div class="rainbow-bg-header">
+          <div class="row">
+            <div class="col mb-3 d-flex align-items-center justify-content-start"
+              style="padding: 2.2rem;width: 300px;flex-grow: 0;">
+              <img src="./Monitoramento Filas Callcenter_files/alares.svg" alt="" style="height: 3rem;">
+            </div>
+            <div class="col mb-3 d-flex align-items-center justify-content-start"
+              style="padding: 2.2rem;font-size: 3em;">
+              Monitoramento Filas Callcenter - Chat
+            </div>
+            <div class="col p-4 mb-3 d-flex align-items-center justify-content-end">
+              <span class="text-md mr-3">
+                <button onclick="chat()"
+                  style="padding: 10px; border-radius: 10px; color: #fff; background-color: blue;">Atualizar</button>
+              </span>
+            </div>
+          </div>
+          <div id="blocks" class="row px-4">
+
+            <div id="id_HD-AZZA" class="col-sm-12 col-md px-0 position_move position_0"
+              style="/*width: 8.333333333333334%;*/" data-position="0">
+              <div class="column px-2" style="position: relative; padding-bottom: 1em;">
+                <div class="row" style="padding-left:28px; font-size: 4em;">
+                  HD-AZZA
+                </div>
+                <span class="block block-HD-NE">
+                  <div class="siren d-flex pl-0 b-b">
+                    <div class="block_waiting card card-primary flex text-white"
+                      style="background: linear-gradient(45deg, rgb(22 29 40 / 100%), rgb(17 75 112 / 100%)); flex-direction: row; margin-bottom: 0px!important; border-radius: .7rem; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transition: all 1s ease !important;">
+                      <div style=" background: rgba(0,0,0,0.1); display: flex; align-items: center">
+                        <div class="card-footer no-border text-center "
+                          style="padding: 0.25rem; font-size: 18px; filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.3));">
+                          <div class="card-header no-border text-center"
+                            style="filter: drop-shadow(0px 2px 1px rgba(0,0,0,0.3));">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-users" style="width: 60px; height: 60px;">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="9" cy="7" r="4"></circle>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0"
+                        style="filter: drop-shadow(0 12px 5px rgba(0,0,0,0.2)); /*height: 4.8rem; line-height: 4.8rem;*/">
+                        <div class="d-flex align-items-center text-md justify-content-center">
+                          <div style="font-size: 3.6em; letter-spacing: -2px; font-weight: 600;">
+                            <span class="counter" id="counter-HELP-DESK-AZZA">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </span>
+              </div>
+            </div>
+
+            <div id="id_HD-CE" class="col-sm-12 col-md px-0 position_move position_0"
+              style="/*width: 8.333333333333334%;*/" data-position="0">
+              <div class="column px-2" style="position: relative; padding-bottom: 1em;">
+                <div class="row" style="padding-left:28px; font-size: 4em;">
+                  HD-CE
+                </div>
+                <span class="block block-SAC-NE">
+                  <div class="siren d-flex pl-0 b-b">
+                    <div class="block_waiting card card-primary flex text-white"
+                      style="background: linear-gradient(45deg, rgb(22 29 40 / 100%), rgb(17 75 112 / 100%)); flex-direction: row; margin-bottom: 0px!important; border-radius: .7rem; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transition: all 1s ease !important;">
+                      <div style=" background: rgba(0,0,0,0.1); display: flex; align-items: center">
+                        <div class="card-footer no-border text-center "
+                          style="padding: 0.25rem; font-size: 18px; filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.3));">
+                          <div class="card-header no-border text-center"
+                            style="filter: drop-shadow(0px 2px 1px rgba(0,0,0,0.3));">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-users" style="width: 60px; height: 60px;">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="9" cy="7" r="4"></circle>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0"
+                        style="filter: drop-shadow(0 12px 5px rgba(0,0,0,0.2)); /*height: 4.8rem; line-height: 4.8rem;*/">
+                        <div class="d-flex align-items-center text-md justify-content-center">
+                          <div style="font-size: 3.6em; letter-spacing: -2px; font-weight: 600;">
+                            <span class="counter" id="counter-HELP-DESK-CE">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </span>
+              </div>
+            </div>
+
+            <div id="id_HD-RNPB" class="col-sm-12 col-md px-0 position_move position_0"
+              style="/*width: 8.333333333333334%;*/" data-position="0">
+              <div class="column px-2" style="position: relative; padding-bottom: 1em;">
+                <div class="row" style="padding-left:28px; font-size: 4em;">
+                  HD-RN/PB
+                </div>
+                <span class="block block-RET-NE">
+                  <div class="siren d-flex pl-0 b-b">
+                    <div class="block_waiting card card-primary flex text-white"
+                      style="background: linear-gradient(45deg, rgb(22 29 40 / 100%), rgb(17 75 112 / 100%)); flex-direction: row; margin-bottom: 0px!important; border-radius: .7rem; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transition: all 1s ease !important;">
+                      <div style=" background: rgba(0,0,0,0.1); display: flex; align-items: center">
+                        <div class="card-footer no-border text-center "
+                          style="padding: 0.25rem; font-size: 18px; filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.3));">
+                          <div class="card-header no-border text-center"
+                            style="filter: drop-shadow(0px 2px 1px rgba(0,0,0,0.3));">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-users" style="width: 60px; height: 60px;">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="9" cy="7" r="4"></circle>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0"
+                        style="filter: drop-shadow(0 12px 5px rgba(0,0,0,0.2)); /*height: 4.8rem; line-height: 4.8rem;*/">
+                        <div class="d-flex align-items-center text-md justify-content-center">
+                          <div style="font-size: 3.6em; letter-spacing: -2px; font-weight: 600;">
+                            <span class="counter" id="counter-HELP-DESK-RN/PB">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </span>
+              </div>
+            </div>
+
+            <div id="id_HD-SE" class="col-sm-12 col-md px-0 position_move position_0"
+              style="/*width: 8.333333333333334%;*/" data-position="0">
+              <div class="column px-2" style="position: relative; padding-bottom: 1em;">
+                <div class="row" style="padding-left:28px; font-size: 4em;">
+                  HD-SE
+                </div>
+                <span class="block block-HD-SE">
+                  <div class="siren d-flex pl-0 b-b">
+                    <div class="block_waiting card card-primary flex text-white"
+                      style="background: linear-gradient(45deg, rgb(22 29 40 / 100%), rgb(17 75 112 / 100%)); flex-direction: row; margin-bottom: 0px!important; border-radius: .7rem; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transition: all 1s ease !important;">
+                      <div style=" background: rgba(0,0,0,0.1); display: flex; align-items: center">
+                        <div class="card-footer no-border text-center "
+                          style="padding: 0.25rem; font-size: 18px; filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.3));">
+                          <div class="card-header no-border text-center"
+                            style="filter: drop-shadow(0px 2px 1px rgba(0,0,0,0.3));">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-users" style="width: 60px; height: 60px;">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="9" cy="7" r="4"></circle>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0"
+                        style="filter: drop-shadow(0 12px 5px rgba(0,0,0,0.2)); /*height: 4.8rem; line-height: 4.8rem;*/">
+                        <div class="d-flex align-items-center text-md justify-content-center">
+                          <div style="font-size: 3.6em; letter-spacing: -2px; font-weight: 600;">
+                            <span class="counter" id="counter-HELP-DESK-SUDESTE1">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </span>
+              </div>
+            </div>
+
+            <div id="id_HD-WEBBY" class="col-sm-12 col-md px-0 position_move position_0"
+              style="/*width: 8.333333333333334%;*/" data-position="0">
+              <div class="column px-2" style="position: relative; padding-bottom: 1em;">
+                <div class="row" style="padding-left:28px; font-size: 4em;">
+                  HD-WEBBY
+                </div>
+                <span class="block block-SAC-SE">
+                  <div class="siren d-flex pl-0 b-b">
+                    <div class="block_waiting card card-primary flex text-white"
+                      style="background: linear-gradient(45deg, rgb(22 29 40 / 100%), rgb(17 75 112 / 100%)); flex-direction: row; margin-bottom: 0px!important; border-radius: .7rem; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transition: all 1s ease !important;">
+                      <div style=" background: rgba(0,0,0,0.1); display: flex; align-items: center">
+                        <div class="card-footer no-border text-center "
+                          style="padding: 0.25rem; font-size: 18px; filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.3));">
+                          <div class="card-header no-border text-center"
+                            style="filter: drop-shadow(0px 2px 1px rgba(0,0,0,0.3));">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-users" style="width: 60px; height: 60px;">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="9" cy="7" r="4"></circle>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0"
+                        style="filter: drop-shadow(0 12px 5px rgba(0,0,0,0.2)); /*height: 4.8rem; line-height: 4.8rem;*/">
+                        <div class="d-flex align-items-center text-md justify-content-center">
+                          <div style="font-size: 3.6em; letter-spacing: -2px; font-weight: 600;">
+                            <span class="counter" id="counter-HELP-DESK-WEBBY">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </span>
+              </div>
+            </div>
+
+            <div id="id_SAC" class="col-sm-12 col-md px-0 position_move position_0"
+              style="/*width: 8.333333333333334%;*/" data-position="0">
+              <div class="column px-2" style="position: relative; padding-bottom: 1em;">
+                <div class="row" style="padding-left:28px; font-size: 4em;">
+                  SAC
+                </div>
+                <span class="block block-RET-SE">
+                  <div class="siren d-flex pl-0 b-b">
+                    <div class="block_waiting card card-primary flex text-white"
+                      style="background: linear-gradient(45deg, rgb(22 29 40 / 100%), rgb(17 75 112 / 100%)); flex-direction: row; margin-bottom: 0px!important; border-radius: .7rem; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transition: all 1s ease !important;">
+                      <div style=" background: rgba(0,0,0,0.1); display: flex; align-items: center">
+                        <div class="card-footer no-border text-center "
+                          style="padding: 0.25rem; font-size: 18px; filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.3));">
+                          <div class="card-header no-border text-center"
+                            style="filter: drop-shadow(0px 2px 1px rgba(0,0,0,0.3));">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-users" style="width: 60px; height: 60px;">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="9" cy="7" r="4"></circle>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0"
+                        style="filter: drop-shadow(0 12px 5px rgba(0,0,0,0.2)); /*height: 4.8rem; line-height: 4.8rem;*/">
+                        <div class="d-flex align-items-center text-md justify-content-center">
+                          <div style="font-size: 3.6em; letter-spacing: -2px; font-weight: 600;">
+                            <span class="counter" id="counter-SAC">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </span>
+              </div>
+            </div>
+
+            <div id="id_SAC-AZZA" class="col-sm-12 col-md px-0 position_move position_0"
+              style="/*width: 8.333333333333334%;*/" data-position="0">
+              <div class="column px-2" style="position: relative; padding-bottom: 1em;">
+                <div class="row" style="padding-left:28px; font-size: 4em;">
+                  SAC-AZZA
+                </div>
+                <span class="block block-HD-WEBBY">
+                  <div class="siren d-flex pl-0 b-b">
+                    <div class="block_waiting card card-primary flex text-white"
+                      style="background: linear-gradient(45deg, rgb(22 29 40 / 100%), rgb(17 75 112 / 100%)); flex-direction: row; margin-bottom: 0px!important; border-radius: .7rem; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transition: all 1s ease !important;">
+                      <div style=" background: rgba(0,0,0,0.1); display: flex; align-items: center">
+                        <div class="card-footer no-border text-center "
+                          style="padding: 0.25rem; font-size: 18px; filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.3));">
+                          <div class="card-header no-border text-center"
+                            style="filter: drop-shadow(0px 2px 1px rgba(0,0,0,0.3));">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-users" style="width: 60px; height: 60px;">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="9" cy="7" r="4"></circle>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0"
+                        style="filter: drop-shadow(0 12px 5px rgba(0,0,0,0.2)); /*height: 4.8rem; line-height: 4.8rem;*/">
+                        <div class="d-flex align-items-center text-md justify-content-center">
+                          <div style="font-size: 3.6em; letter-spacing: -2px; font-weight: 600;">
+                            <span class="counter" id="counter-SAC-AZZA">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </span>
+              </div>
+            </div>
+
+            <div id="id_SAC-WEBBY" class="col-sm-12 col-md px-0 position_move position_0"
+              style="/*width: 8.333333333333334%;*/" data-position="0">
+              <div class="column px-2" style="position: relative; padding-bottom: 1em;">
+                <div class="row" style="padding-left:28px; font-size: 4em;">
+                  SAC-WEBBY
+                </div>
+                <span class="block block-SAC-WEBBY">
+                  <div class="siren d-flex pl-0 b-b">
+                    <div class="block_waiting card card-primary flex text-white"
+                      style="background: linear-gradient(45deg, rgb(22 29 40 / 100%), rgb(17 75 112 / 100%)); flex-direction: row; margin-bottom: 0px!important; border-radius: .7rem; border-bottom-right-radius: 0; border-bottom-left-radius: 0; transition: all 1s ease !important;">
+                      <div style=" background: rgba(0,0,0,0.1); display: flex; align-items: center">
+                        <div class="card-footer no-border text-center "
+                          style="padding: 0.25rem; font-size: 18px; filter: drop-shadow(0px 4px 1px rgba(0,0,0,0.3));">
+                          <div class="card-header no-border text-center"
+                            style="filter: drop-shadow(0px 2px 1px rgba(0,0,0,0.3));">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round" class="feather feather-users" style="width: 60px; height: 60px;">
+                              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="9" cy="7" r="4"></circle>
+                              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-body p-0"
+                        style="filter: drop-shadow(0 12px 5px rgba(0,0,0,0.2)); /*height: 4.8rem; line-height: 4.8rem;*/">
+                        <div class="d-flex align-items-center text-md justify-content-center">
+                          <div style="font-size: 3.6em; letter-spacing: -2px; font-weight: 600;">
+                            <span class="counter" id="counter-SAC-WEBBY">0</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Adicionando jQuery do CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    function monitorarFila() {
+      const elementos = document.querySelectorAll('.counter'); // Seleciona todos os elementos com a classe 'counter'
+
+      elementos.forEach(elemento => {
+        const valor = parseInt(elemento.textContent); // Obtém o valor atual do contador
+
+        if (valor > 100) {
+          // Se o valor for maior que 100, adiciona a classe 'glowing-danger'
+          elemento.closest('.block_waiting').className = 'block_waiting card card-primary flex text-white glowing-danger';
+        } else if (valor > 80) {
+          // Se o valor for maior que 80, adiciona a classe 'glowing-warning'
+          elemento.closest('.block_waiting').className = 'block_waiting card card-primary flex text-white glowing-warning';
+        } else {
+          // Se o valor for menor ou igual a 80, remove as classes de alerta
+          elemento.closest('.block_waiting').className = 'block_waiting card card-primary flex text-white';
+        }
+      });
+    }
+
+    // Chame a função sempre que precisar atualizar a fila
+    setInterval(monitorarFila, 5000); // Monitora a fila a cada 5 segundos
+  </script>
+
+</body>
+
+</html>
